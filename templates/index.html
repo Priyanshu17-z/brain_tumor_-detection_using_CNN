@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tumor detection system </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<style>
+    body{
+        font-family: 'Arial' , sans-serif;
+        background: black;
+    }
+    .container{
+        max-width: 600px;
+        margin: 0 ,  auto;
+    }
+    .card{
+        border-radius: 15px;
+        border-color: green;
+    }
+    .btn{
+        width: 50%;
+    }
+    .lead{
+        margin-bottom: 50px;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="text-center">
+            <h1 class="display-4 text-primary" >MRI Tumor Detection System</h1>
+             <p class="lead text-secondary">Upload an Mri Image to detect if there is a tumor</p>
+        </div>
+        <div class="card shadow p-4 mt-4">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="file" class="form-lable">Select MRI Image </label>
+                    <input type="file" class="form-control" id="file" name="file" accept="image/*" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Upload and detect</button>
+            </form>
+        </div>
+        {% if result %}
+          <div id="results" class="mt-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="card-title text-success">{{result}}</h4>
+                    <p  class="card-text text-muted">Confidence : {{confidence}}</p>
+                    <img src="{{file_path}}" class="img-fluid rounde" alt="some issue">
+                    <p class="card-text text-muted"> file = : {{file_name}}</p>
+                
+
+                </div>
+            </div>
+          </div>
+
+        {% endif %}
+
+
+    </div>
+</body>
+</html>
